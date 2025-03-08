@@ -1,6 +1,9 @@
 pipeline {
 
     agent any
+    tools {
+        maven 'M2_HOME'
+    }
 
     environment {
       BRANCH_NAME = 'main'
@@ -15,6 +18,14 @@ pipeline {
               url: "${GIT_URL}"
             }
     }
+        stage('unit test') {
+            steps {
+                sh 'mvn clean'
+                sh 'mvn test'
+                sh 'mvn compile'
+            }
+        }
+        
 }
 
 }
