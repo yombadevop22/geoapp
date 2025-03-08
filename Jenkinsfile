@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Sonarqube Scan'){
             steps{
-                WithSonarQubeEnv(credentialsID: "${SONAQUBE_CRED}", installationName: "${SONAQUBE_INSTALLATION}" ) {
+                withSonarQubeEnv(credentialsID: "${SONAQUBE_CRED}", installationName: "${SONAQUBE_INSTALLATION}" ) {
               sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=${APP_NAME} -Dsonar.projectKey=${APP_NAME} -Dsonnar.java.binaries=. '''
                 }
             }
