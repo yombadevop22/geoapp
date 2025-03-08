@@ -7,6 +7,7 @@ pipeline {
 
     environment {
       BRANCH_NAME = 'main'
+      SCANNER_HOME = tool 'sonar-tool'
       GIT_URL = 'https://github.com/yombadevop22/geoapp.git'
       GITHUB_CREDENTIALS = 'github-credentials'
       SONAQUBE_CRED = 'Sonar-Cred'
@@ -30,8 +31,8 @@ pipeline {
         }
         stage('Sonarqube Scan'){
             steps{
-                withSonarQubeEnv(credentialsID: "${SONAQUBE_CRED}", installationName: "${SONAQUBE_INSTALLATION}" ) {
-              sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=${APP_NAME} -Dsonar.projectKey=${APP_NAME} -Dsonnar.java.binaries=. '''
+                withSonarQubeEnv(credentialsId: "${SONAQUBE_CRED}", installationName: "${SONAQUBE_INSTALLATION}" ) {
+              sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=${APP_NAME} -Dsonar.projectKey=${APP_NAME} -Dsonar.java.binaries=. '''
                 }
             }
         }
