@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'qaserver'}
+    stages {
+        stage('Build')
+        steps {
+            sh 'pwd'
+            sh 'ls'
+            sh 'cat /etc/os-release'
+            sh 'touch agent-jenkins'
+        }
+    }
+}
