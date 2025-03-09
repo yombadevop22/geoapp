@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Quality Gate Check'){
             steps{
-                scrip{
+                script{
                     waitForQualityGate abortPipeline: false, credentialsId: "${SONAQUBE_CRED}"
                 }
             }
