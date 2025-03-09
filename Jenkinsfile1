@@ -9,7 +9,7 @@ pipeline {
             }
         }
         stage('test'){
-            agent { docker 'apine:3.20.3' }
+            agent { docker 'alpine:3.20.3' }
             steps{
                 sh 'pwd'
                 sh 'cat /etc/os-release'
