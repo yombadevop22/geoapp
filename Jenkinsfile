@@ -44,6 +44,12 @@ pipeline {
                 }
             }
         }
+        stage('Trivy scan'){
+            steps{
+                sh "trivy fs --format table -o maven_dependency.html ."
+            }
+        }
+
         
 }
 
