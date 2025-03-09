@@ -18,7 +18,7 @@ pipeline {
       ARTIFACTORY_URL = 'http://34.234.74.213:8081/artifactory'
       REPO = 'geolocation'
       ARTIFACTTARGETPATH = 'release_${BUILD_ID}.jar'
-      DOCKER_REPO = '376129840399.dkr.ecr.us-east-1.amazonaws.com/devops'
+      DOCKER_REPO = 'devops'
       AWS_REGION = 'us-east-1'
       REPO_URL = '376129840399.dkr.ecr.us-east-1.amazonaws.com'
 
@@ -105,8 +105,8 @@ pipeline {
               //def ecr_passwrd=sh(script: "aws ecr-public get-login-password --region 'us-east-1'")
                 //sh "docker login --username AWS --password ${ecr_passwrd} public.ecr.aws/g0j7o9l5"
               sh "aws ecr-public get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${REPO_URL}"
-              sh "docker push ${DOCKER_REPO}:latest "
-              sh "docker push ${DOCKER_REPO}:${BUILD_ID} "
+              sh "docker push ${REPO_URL}/${DOCKER_REPO}:latest "
+              sh "docker push ${REPO_URL}/${DOCKER_REPO}:${BUILD_ID} "
 
                 }
             }
