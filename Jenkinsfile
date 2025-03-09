@@ -39,7 +39,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        /*stage('Sonarqube Scan'){
+        stage('Sonarqube Scan'){
             steps{
                 withSonarQubeEnv(credentialsId: "${SONAQUBE_CRED}", installationName: "${SONAQUBE_INSTALLATION}" ) {
               sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=${APP_NAME} -Dsonar.projectKey=${APP_NAME} -Dsonar.java.binaries=. '''
@@ -58,7 +58,7 @@ pipeline {
                 sh "trivy fs --format table -o maven_dependency.html ."
             }
         }
-        */
+        
         stage('package app'){
             steps{
                 sh 'mvn package'
