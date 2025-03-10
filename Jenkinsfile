@@ -17,7 +17,7 @@ pipeline {
       ARTIFACTPATH = 'target/*.jar'
       ARTIFACTORY_URL = 'http://34.234.74.213:8081/artifactory'
       REPO = 'geolocation'
-      ARTIFACTTARGETPATH = 'release_${BUILD_ID}.jar'
+      ARTIFACTTARGETPATH = "release_${BUILD_ID}.jar"
       DOCKER_REPO = '376129840399.dkr.ecr.us-east-1.amazonaws.com/devops'
       AWS_REGION = 'us-east-1'
       REPO_URL = '376129840399.dkr.ecr.us-east-1.amazonaws.com'
